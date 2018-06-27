@@ -91,6 +91,7 @@ else:
 ###############################################################################
 
 ## a function that has one program (one return) to test if JOINT NUMBER output is correct
+'''
 def test_01(a, b):
     if a < minpaydays and b == 0:
         return 0 # compare with (babyjoint - j_count_original) at the end
@@ -100,10 +101,21 @@ def test_01(a, b):
         return j_pay
     if a >= minpaydays and b == 1:
         return j_pay - 1
+'''
+
+## rewriting test_01
+
+def test_012(a, b):
+    value = 0
+    if a >= minpaydays:
+        value = j_pay
+    if b == 1:
+        value = value - 1
+    return value            
 
 ## call a function?
 j_check = test_01(accountlength, smokeboolean)
-test_01_is = j_check == (j_count_update - j_count_original)
+test_012_is = j_check == (j_count_update - j_count_original)
 print("@@@@@@@@@ Internal test of joint number:")
 print("@@@@@@@@@ " + str(test_01_is))
 
